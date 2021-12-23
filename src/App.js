@@ -19,9 +19,9 @@ function App() {
   // console.log(surah);
 
   return (
-    <div>
+    <div className=" scroll-smooth">
       <HeaderComponent />
-      <SeacrhComponent />
+      {/* <SeacrhComponent /> */}
       <CardListComponent listsurah={surah} />
     </div>
   );

@@ -1,31 +1,61 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import SeacrhComponent from "../SeacrhComponent";
 
 export default function CardListComponent({ listsurah }) {
   //   console.log(listsurah);
+  const listSurah = listsurah;
+  const [input, setInput] = useState("");
+  const [output, setOutput] = useState([]);
+
+  const handleChange = (e) => {
+    const hasil = e.target.value;
+    console.log(hasil);
+    setInput(hasil);
+  };
+
+  useEffect(() => {
+    setOutput([]);
+
+    listSurah.filter((val) => {
+      if (
+        val.name.transliteration.id.toLowerCase().includes(input.toLowerCase())
+      ) {
+        setOutput((output) => [...output, val]);
+      }
+    });
+  }, [input]);
+
   return (
     <div>
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 justify-center mt-6">
-        {listsurah.map((surah) => {
-          return (
-            <div
-              className=" bg-gray-400 w-80 h-32 rounded-md mx-auto mb-4"
-              key={surah.number}
-            >
-              <div className="mt-6">
-                <p className="font-bold text-xl pl-2">
-                  {surah.name.transliteration.id}
-                </p>
-                <p className="font-extrabold text-2xl float-right pr-2">
-                  {surah.name.short}
-                </p>
-                <p className="font-semibold mt-5 pl-2">
-                  {surah.name.translation.id}
-                </p>
+      <SeacrhComponent handleChange={handleChange} />
+      {output.length > 0 ? (
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 justify-center mt-6">
+          {output.map((surah) => {
+            return (
+              <div
+                className=" bg-slate-200 w-80 h-32 rounded-md mx-auto mb-4 hover:drop-shadow-md hover:cursor-pointer"
+                key={surah.number}
+              >
+                <div className="mt-6">
+                  <p className="font-bold text-xl pl-2">
+                    {surah.name.transliteration.id}
+                  </p>
+                  <p className="font-extrabold text-2xl float-right pr-2">
+                    {surah.name.short}
+                  </p>
+                  <p className="font-semibold mt-5 pl-2">
+                    {surah.name.translation.id}
+                  </p>
+                </div>
               </div>
-            </div>
-          );
-        })}
-      </div>
+            );
+          })}
+        </div>
+      ) : (
+        <div className="flex flex-row mt-24">
+          <p className="mx-auto text-lg font-bold">Surah tidak ditemukan ;(</p>
+        </div>
+      )}
     </div>
   );
 }

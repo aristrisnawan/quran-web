@@ -1,8 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import CardListComponent from "./components/CardListComponent";
+import DetailSurah from "./components/DetailSurah";
 import HeaderComponent from "./components/HeaderComponent";
+import Layout from "./Layout/Layout";
 import SeacrhComponent from "./SeacrhComponent";
 
 function App() {
@@ -20,9 +23,13 @@ function App() {
 
   return (
     <div className=" scroll-smooth">
-      <HeaderComponent />
-      {/* <SeacrhComponent /> */}
-      <CardListComponent listsurah={surah} />
+      <Layout>
+        {/* <CardListComponent listsurah={surah} /> */}
+        <Routes>
+          <Route path="/" element={<CardListComponent listsurah={surah} />} />
+          <Route path="/detail/:id" element={<DetailSurah />} />
+        </Routes>
+      </Layout>
     </div>
   );
 }

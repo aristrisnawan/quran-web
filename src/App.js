@@ -24,7 +24,6 @@ function App() {
   return (
     <div className=" scroll-smooth">
       <Layout>
-        {/* <CardListComponent listsurah={surah} /> */}
         <Routes>
           <Route path="/" element={<CardListComponent listsurah={surah} />} />
           <Route path="/detail/:id" element={<DetailSurah />} />

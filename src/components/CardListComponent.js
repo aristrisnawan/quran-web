@@ -7,6 +7,7 @@ export default function CardListComponent({ listsurah }) {
   const listSurah = listsurah;
   const [input, setInput] = useState("");
   const [output, setOutput] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const handleChange = (e) => {
     const hasil = e.target.value;
@@ -22,6 +23,7 @@ export default function CardListComponent({ listsurah }) {
         val.name.transliteration.id.toLowerCase().includes(input.toLowerCase())
       ) {
         setOutput((output) => [...output, val]);
+        setLoading(false);
       }
     });
   }, [input]);
@@ -38,7 +40,7 @@ export default function CardListComponent({ listsurah }) {
                   className=" bg-slate-200 w-80 h-32 rounded-md mx-auto mb-4 hover:drop-shadow-md hover:cursor-pointer"
                   key={surah.number}
                 >
-                  <div className="mt-6">
+                  <div className="mt-6 pt-4">
                     <p className="font-bold text-xl pl-2">
                       {surah.name.transliteration.id}
                     </p>

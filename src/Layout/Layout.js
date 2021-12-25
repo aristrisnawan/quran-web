@@ -1,4 +1,5 @@
 import React from "react";
+import FooterComponent from "../components/FooterComponent";
 import HeaderComponent from "../components/HeaderComponent";
 
 export default function Layout({ children }) {
@@ -6,6 +7,7 @@ export default function Layout({ children }) {
     <div>
       <HeaderComponent />
       {children}
+      <FooterComponent />
     </div>
   );
 }

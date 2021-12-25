@@ -15,6 +15,10 @@ export default function CardListComponent({ listsurah }) {
     setInput(hasil);
   };
 
+  // useEffect(() => {
+  //   setOutput(listsurah);
+  // });
+
   useEffect(() => {
     setOutput([]);
 
@@ -57,8 +61,13 @@ export default function CardListComponent({ listsurah }) {
           })}
         </div>
       ) : (
-        <div className="flex flex-row mt-24">
+        <div className="flex flex-col mt-24">
           <p className="mx-auto text-lg font-bold">Surah tidak ditemukan ;(</p>
+          <p className="mx-auto">
+            (Sorry, this website still has bugs, if anyone has just opened this
+            website or after refreshing this website, please type something in
+            the searcbar)
+          </p>
         </div>
       )}
     </div>

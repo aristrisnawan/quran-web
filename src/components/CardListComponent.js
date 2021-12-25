@@ -63,7 +63,7 @@ export default function CardListComponent({ listsurah }) {
       ) : (
         <div className="flex flex-col mt-24">
           <p className="mx-auto text-lg font-bold">Surah tidak ditemukan ;(</p>
-          <p className="mx-auto">
+          <p className="mx-auto mb-96">
             (Sorry, this website still has bugs, if anyone has just opened this
             website or after refreshing this website, please type something in
             the searcbar)
